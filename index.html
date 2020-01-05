@@ -1,12 +1,17 @@
 <!doctype html>
 
 <html>
+    <!-- everything that DOESNT appear on the page (icon, tab title, Messenger preview, etc etc) goes into head -->
     <head>
         <title>flappy bird</title>
         <meta charset="utf-8">
+        <script defer src="./index.js"></script>
     </head>
 
+    <!-- everything that appears on the page is in body -->
     <body>
-        <h1>🐧</h1>
+        <h1 id="bird">🐧</h1>
+        <div id="pipe-top"></div>
+        <div id="pipe-bottom"></div>
     </body>
 </html>
