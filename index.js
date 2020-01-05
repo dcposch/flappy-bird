@@ -1,7 +1,11 @@
 
+const game = document.querySelector('#game')
 const bird = document.querySelector('#bird')
 const pipeT = document.querySelector('#pipe-top')
 const pipeB = document.querySelector('#pipe-bottom')
+
+const width = game.scrollWidth
+const height = game.scrollHeight
 
 let y = 50
 let vy = 0
@@ -10,6 +14,7 @@ const pipew = 50
 let pipex = 500
 let pipey1 = 100
 let pipey2 = 300
+let vpipex = -3
 
 function frame () {
 
@@ -19,6 +24,12 @@ function frame () {
 
     y += vy
     vy += 0.2
+
+    const birdyt = y + 34
+    const birdyb = y + 50
+    if (birdyt < 0 || birdyb > height) {
+        return
+    }
 
     // move the pipes
 
@@ -36,13 +47,23 @@ function frame () {
     pipeB.style.bottom = '0'
     pipeB.style.backgroundColor = 'green'
 
-    pipex -= 2
+    pipex += vpipex
 
     // if the pipex is less than -pipew
     // then reset the pipe
+    if (pipex < -pipew) {
+        pipex = width
+        pipey1 = Math.random() * (height - 200)
+        pipey2 = Math.random() * (height - pipey1 - 100) + pipey1 + 100
+        vpipex *= 1.1
+    }
 
     // if the bird ran into the pipe
     // return (do not call reqAF)
+
+    if (pipex < 30 && (birdyt < pipey1 || birdyb > pipey2)) {
+        return
+    }
 
     window.requestAnimationFrame(frame)
 }

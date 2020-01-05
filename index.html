@@ -6,12 +6,28 @@
         <title>flappy bird</title>
         <meta charset="utf-8">
         <script defer src="./index.js"></script>
+        <style>
+            body {
+                margin: 0 auto;
+                max-width: 800px;
+            }
+            #game {
+                position: relative;
+                border-top: 10px solid green;
+                border-bottom: 10px solid green;
+                height: 400px;
+                overflow: hidden;
+            }
+        </style>
     </head>
 
     <!-- everything that appears on the page is in body -->
     <body>
-        <h1 id="bird">🐧</h1>
-        <div id="pipe-top"></div>
-        <div id="pipe-bottom"></div>
+        <h1>🕊 flap</h1>
+        <div id="game">
+            <h1 id="bird">🐧</h1>
+            <div id="pipe-top"></div>
+            <div id="pipe-bottom"></div>
+        </div>
     </body>
 </html>
